@@ -1,16 +1,12 @@
 // import dependencies
 import IBMCloudEnv from 'ibm-cloud-env';
-import { NoAuthAuthenticator } from 'ibm-cloud-sdk-core';
 import { CloudantV1 } from '@ibm-cloud/cloudant';
 
 IBMCloudEnv.init('/server/config/mappings.json');
 
 // initialize Cloudant
 const cloudant_url = IBMCloudEnv.getString('cloudant_url');
-
-const cloudant = CloudantV1.newInstance({
-  authenticator: new NoAuthAuthenticator({}),
-});
+const cloudant = CloudantV1.newInstance();
 
 cloudant.setServiceUrl(cloudant_url);
 const dbname = 'mydb';
